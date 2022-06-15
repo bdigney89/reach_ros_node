@@ -45,12 +45,12 @@ import reach_ros_node.parser
 class RosNMEADriver(object):
     def __init__(self):
         # Our publishers
-        self.fix_pub = rospy.Publisher('tcpfix', NavSatFix, queue_size=1)
-        self.vel_pub = rospy.Publisher('tcpvel', TwistStamped, queue_size=1)
-        self.timeref_pub = rospy.Publisher('tcptime', TimeReference, queue_size=1)
+        self.fix_pub = rospy.Publisher('fix', NavSatFix, queue_size=1)
+        self.vel_pub = rospy.Publisher('vel', TwistStamped, queue_size=1)
+        self.timeref_pub = rospy.Publisher('time', TimeReference, queue_size=1)
         # Frame of references we should publish in
-        self.frame_timeref = rospy.get_param('~frame_timeref', 'gps')
-        self.frame_gps = rospy.get_param('~frame_gps', 'gps')
+        self.frame_timeref = rospy.get_param('~frame_timeref', 'gps_emlid')
+        self.frame_gps = rospy.get_param('~frame_gps', 'gps_emlid')
         self.use_rostime = rospy.get_param('~use_rostime', True)
         self.use_rmc = rospy.get_param('~use_rmc', False)
         # Flags for what information we have
